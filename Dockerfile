@@ -11,5 +11,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends patch graphviz 
  && rm -rf /tmp/xhprof \
  && echo 'date.timezone = UTC' > /usr/local/etc/php/conf.d/zz-date.ini
 
+COPY docker-xhprof-entrypoint /usr/local/bin/
+
+ENTRYPOINT ["docker-xhprof-entrypoint"]
+CMD ["apache2-foreground"]
+
 VOLUME /tmp
 EXPOSE 80

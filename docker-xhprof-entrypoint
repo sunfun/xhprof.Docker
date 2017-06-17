@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ "$XHPROF_URL_PREFIX" ]]; then
+	echo "SetEnv XHPROF_URL_PREFIX $XHPROF_URL_PREFIX" > /etc/apache2/conf-enabled/00_XHPROF_URL_PREFIX.conf
+fi
+
+exec /usr/local/bin/docker-php-entrypoint "$@"
