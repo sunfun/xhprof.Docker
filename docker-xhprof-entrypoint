@@ -1,5 +1,9 @@
 #!/bin/bash
-if [[ "$XHPROF_URL_PREFIX" ]]; then
+if [[ -n "$XHPROF_RUNS_PATH" ]]; then
+	echo "SetEnv XHPROF_RUNS_PATH $XHPROF_RUNS_PATH" > /etc/apache2/conf-enabled/00_XHPROF_RUNS_PATH.conf
+fi
+
+if [[ -n "$XHPROF_URL_PREFIX" ]]; then
 	echo "SetEnv XHPROF_URL_PREFIX $XHPROF_URL_PREFIX" > /etc/apache2/conf-enabled/00_XHPROF_URL_PREFIX.conf
 fi
 

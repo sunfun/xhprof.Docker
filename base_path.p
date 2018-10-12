@@ -34,6 +34,16 @@ diff --git a/xhprof_lib/utils/xhprof_runs.php b/xhprof_lib/utils/xhprof_runs.php
 index 2a22a5d..79fc5e3 100644
 --- a/xhprof_lib/utils/xhprof_runs.php
 +++ b/xhprof_lib/utils/xhprof_runs.php
+@@ -92,7 +92,8 @@
+     // in which the error_log file resides.
+ 
+     if (empty($dir)) {
+-      $dir = ini_get("xhprof.output_dir");
++      if (isset($_SERVER['XHPROF_RUNS_PATH'])) $dir = $_SERVER['XHPROF_RUNS_PATH'];
++      if (empty($dir)) $dir = ini_get("xhprof.output_dir");
+       if (empty($dir)) {
+ 
+         $dir = sys_get_temp_dir();
 @@ -146,13 +146,14 @@ class XHProfRuns_Default implements iXHProfRuns {
    }
  
